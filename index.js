@@ -17,15 +17,10 @@ function getImagePath(id) {
     return `${IMGS_PATH}/${parsed}.jpg`;
 }
 
-function getHashedId(obj) {
-    let str = JSON.stringify(obj);
-    let sum = 0;
-    for (let i = 0; i < str.length; i++) {
-        sum += str.charCodeAt(i);
-        sum %= IMGS_TOTAL;
-    }
+function getRandomId() {
+    let target = Math.floor(Math.random() * (IMGS_TOTAL) + IMGS_IND_MIN);
 
-    return IMGS_IND_MIN + sum;
+    return target;
 }
 
 function appendImage(id) {
@@ -35,4 +30,4 @@ function appendImage(id) {
     target.appendChild(img);
 }
 
-appendImage(getHashedId(Math.random()));
+appendImage(getRandomId());
